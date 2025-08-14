@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "18859074200",
+    "project_id": "racetrack-87efb",
+    "storage_bucket": "racetrack-87efb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18859074200:android:f00478a2a3abe2d3b7a6ed",
+        "android_client_info": {
+          "package_name": "Nishi.Race_Track1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaJYSGTTriu_7HhMqz8ZwRzc-ditYz9j0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
