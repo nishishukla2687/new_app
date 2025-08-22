@@ -7,7 +7,7 @@ import 'history_screen.dart';
 import 'login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   // Handle logout
   Future<void> _handleLogout(BuildContext context) async {
@@ -46,13 +46,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxGradient(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
             Colors.blue.shade400,
             Colors.blue.shade800,
           ],
+        ),
         ),
         child: SafeArea(
           child: Consumer<FirebaseService>(
@@ -242,8 +244,7 @@ class HomeScreen extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                color.withOpacity(0.8),
-                color,
+                color.withValues(alpha: 0.8),                
               ],
             ),
           ),

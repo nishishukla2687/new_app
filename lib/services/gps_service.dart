@@ -5,7 +5,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class GPSService extends ChangeNotifier {
   Position? _currentPosition;
-  List<Position> _positions = [];
+  final List<Position> _positions = [];
   StreamSubscription<Position>? _positionStream;
   double _totalDistance = 0.0;
   bool _isTracking = false;
@@ -87,11 +87,9 @@ class GPSService extends ChangeNotifier {
       _errorMessage = null;
 
       // Get initial position
-      if (_currentPosition == null) {
-        _currentPosition = await Geolocator.getCurrentPosition(
+      _currentPosition ??= await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high,
         );
-      }
 
       if (_currentPosition != null) {
         _positions.add(_currentPosition!);
@@ -106,7 +104,9 @@ class GPSService extends ChangeNotifier {
         },
         onError: (error) {
           _errorMessage = 'GPS tracking error: $error';
-          print('GPS Error: $error');
+          if (kDebugMode) {
+            print('GPS Error: $error');
+          }
           notifyListeners();
         },
       );

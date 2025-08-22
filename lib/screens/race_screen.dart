@@ -8,7 +8,7 @@ import '../services/step_service.dart';
 import '../models/run_data.dart';
 
 class RaceScreen extends StatefulWidget {
-  const RaceScreen({Key? key}) : super(key: key);
+  const RaceScreen({super.key});
 
   @override
   State<RaceScreen> createState() => _RaceScreenState();
@@ -431,7 +431,7 @@ class _RaceScreenState extends State<RaceScreen> {
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha:0.1),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
@@ -453,3 +453,10 @@ class _RaceScreenState extends State<RaceScreen> {
             style: TextStyle(
               fontSize: 12,
               color: Colors.grey.shade600,
+            ),
+        ),
+      ],
+    ),
+  );
+}
+}

@@ -105,19 +105,19 @@ class StepService extends ChangeNotifier {
 
   // Handle step counting errors
   void _handleStepCountError(dynamic error) {
-    print('Step count error: $error');
+    if (kDebugMode) {
+      print('Step count error: $error');
+    }
 
-    if (error is PedometerException) {
-      switch (error.message) {
-        case 'Step count not available':
-          _errorMessage = 'Step counting is not available on this device.';
-          break;
-        case 'Permission denied':
-          _errorMessage = 'Permission denied for step counting.';
-          break;
-        default:
-          _errorMessage = 'Step counter error: ${error.message}';
-      }
+    // Handle different types of errors without relying on PedometerException type check
+    String errorString = error.toString().toLowerCase();
+
+    if (errorString.contains('step count not available')) {
+      _errorMessage = 'Step counting is not available on this device.';
+    } else if (errorString.contains('permission denied')) {
+      _errorMessage = 'Permission denied for step counting.';
+    } else if (errorString.contains('pedometer')) {
+      _errorMessage = 'Step counter error: $error';
     } else {
       _errorMessage = 'Unexpected step counter error: $error';
     }
